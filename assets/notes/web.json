@@ -1,6 +1,7 @@
 [
 	{
 		"title": "My first web note",
-		"content": "This is where I ramble on and on about websites"
+		"content": "This is where I ramble on and on about websites",
+		"tags": []
 	}
 ]
