@@ -1,3 +1,4 @@
+let currentNotes = [];
 
 function generateNoteCard(note) {
 	const wrapper = $("<div class='noteCard card card-body'></div>");
@@ -25,9 +26,28 @@ function showWebNotes() {
 		dataType: "json",
 		success: res => {
 			console.log("Get web notes",res);
+			currentNotes = res;
 			fillNotesSection(res);
 		}
 	})
+}
+
+async function postWebNote() {
+	let formData = {};
+	formData["title"] = $("#noteTitle").val();
+	formData["content"] = $("#noteContent").val();
+	console.log("Post web note data", formData);
+	console.log("Current data", currentNotes);
+	$.ajax({
+		url: "/api/web",
+		type: "POST",
+		data: { formData, currentNotes},
+		success: res => {
+			console.log("Post web note response", res);
+			$("#noteTitle").val("");
+			$("#noteContent").val("");
+		}
+	});
 }
 
 function showLinuxNotes() {
@@ -37,6 +57,7 @@ function showLinuxNotes() {
 		dataType: "json",
 		success: res => {
 			console.log("Get linux notes",res);
+			currentNotes = res;
 			fillNotesSection(res);
 		}
 	})
@@ -49,6 +70,7 @@ function showPythonNotes() {
 		dataType: "json",
 		success: res => {
 			console.log("Get python notes",res);
+			currentNotes = res;
 			fillNotesSection(res);
 		}
 	})
@@ -61,6 +83,7 @@ function showRaspberryPiNotes() {
 		dataType: "json",
 		success: res => {
 			console.log("Get raspberry Pi notes",res);
+			currentNotes = res;
 			fillNotesSection(res);
 		}
 	})
@@ -73,6 +96,7 @@ function showComputersNotes() {
 		dataType: "json",
 		success: res => {
 			console.log("Get computers notes",res);
+			currentNotes = res;
 			fillNotesSection(res);
 		}
 	})
@@ -81,8 +105,13 @@ function showComputersNotes() {
 // On load get web notes by default
 showWebNotes();
 
+// Click funtions for titles of section to show that sections notes
 $("#webDesign").on("click", showWebNotes);
 $("#linux").on("click", showLinuxNotes);
 $("#python").on("click", showPythonNotes);
 $("#raspberryPi").on("click", showRaspberryPiNotes);
 $("#computers").on("click", showComputersNotes);
+
+
+// Click functions for the make note form
+$("#createNoteBtn").on("click", postWebNote);
