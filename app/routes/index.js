@@ -2,7 +2,8 @@ const router = require("express").Router();
 const fileController = require("../controllers/file");
 
 // Matches with "/api/web"
-router.route("/api/web")
+router
+  .route("/api/web")
   .get(fileController.getAllWebNotes)
   .post(fileController.createWebNote);
 
@@ -12,21 +13,16 @@ router.route("/api/web")
 //   .put(userController.update)
 //   .delete(userController.remove);
 
+// Matches with "/api/web"
+router.route("/api/linux").get(fileController.getAllLinuxNotes);
 
 // Matches with "/api/web"
-router.route("/api/linux")
-  .get(fileController.getAllLinuxNotes)
-
-// Matches with "/api/web"
-router.route("/api/python")
-  .get(fileController.getAllPythonNotes)
+router.route("/api/python").get(fileController.getAllPythonNotes);
 
 // Matches with "/api/raspberryPi"
-router.route("/api/raspberryPi")
-  .get(fileController.getAllRaspberryPiNotes)
+router.route("/api/raspberryPi").get(fileController.getAllRaspberryPiNotes);
 
 // Matches with "/api/computers"
-router.route("/api/computers")
-  .get(fileController.getAllComputersNotes)
+router.route("/api/computers").get(fileController.getAllComputersNotes);
 
 module.exports = router;

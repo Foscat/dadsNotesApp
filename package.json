@@ -8,14 +8,17 @@
     "express": "^4.17.1",
     "fs": "^0.0.1-security",
     "moment": "^2.29.1",
+    "open": "^7.3.0",
     "path": "^0.12.7"
   },
   "devDependencies": {
-    "nodemon": "^2.0.6"
+    "nodemon": "^2.0.6",
+    "prettier": "^2.1.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "format": "prettier --write \"./**/*\""
   },
   "repository": {
     "type": "git",
