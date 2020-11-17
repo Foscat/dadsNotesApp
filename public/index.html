@@ -35,6 +35,66 @@
   </nav>
 
   <body>
+    <div id="editModal" class="modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Edit Note</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="editTitle">Title</label>
+                <input type="text" class="form-control" id="editTitle" />
+              </div>
+              <div class="form-group">
+                <label for="editContent">Content</label>
+                <textarea
+                  rows="5"
+                  class="form-control"
+                  id="editContent"
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <label for="editTags">Tags</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="editTags"
+                  aria-describedby="emailHelp"
+                />
+              </div>
+            </form>
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              id="submitEditedNoteBtn"
+              type="button"
+              class="btn btn-primary"
+            >
+              Save changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div id="siteWrapper">
       <div class="container">
         <div class="top-box">
@@ -316,26 +376,28 @@
       </div>
 
       <div id="notesSection">
-        <!-- Api for form under construction -->
-        <form>
-          <label for="noteTitle">Title</label>
-          <input type="text" id="noteTitle" name="noteTitle" />
+        <button data-show="false" id="notesFormToggle">Add a note</button>
+        <div class="hidden" id="addNoteForm">
+          <form>
+            <label for="noteTitle">Title</label>
+            <input type="text" id="noteTitle" name="noteTitle" />
 
-          <label for="noteContent">Content</label>
-          <textarea
-            name="noteContent"
-            id="noteContent"
-            cols="30"
-            rows="5"
-          ></textarea>
+            <label for="noteContent">Content</label>
+            <textarea
+              name="noteContent"
+              id="noteContent"
+              cols="30"
+              rows="5"
+            ></textarea>
 
-          <label for="tagsContent">Tags</label>
-          <input type="text" id="tagsContent" name="tagsContent" />
+            <label for="tagsContent">Tags</label>
+            <input type="text" id="tagsContent" name="tagsContent" />
 
-          <button id="createNoteBtn" type="button" class="btn btn-success">
-            Submit
-          </button>
-        </form>
+            <button id="createNoteBtn" type="button" class="btn btn-success">
+              Submit
+            </button>
+          </form>
+        </div>
 
         <h4 id="notesHeader" class="rounded">Current Notes</h4>
 

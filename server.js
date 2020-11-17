@@ -45,9 +45,10 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
+// Run server on assigned PORT
 app.listen(PORT, () =>
   console.log(`Server listening on: http://localhost:${PORT}`)
 );
 
-// opens the app in your default browser
-open(`http://localhost:${PORT}`);
+// Opens the app in your default browser on load
+// open(`http://localhost:${PORT}`);

@@ -72,6 +72,19 @@ form {
   margin: 10px auto;
 }
 
+#notesFormToggle {
+  background-color: darkslategray;
+  color: #fff;
+  margin: 20px 0 0 50px;
+}
+#notesFormToggle:hover {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
 .noteCard {
   background-color: antiquewhite;
   border: solid black 1px;
@@ -79,4 +92,34 @@ form {
   width: 95%;
   margin: 10px auto;
   padding: 10px;
+}
+
+.noteTitleWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.deleteNoteBtn {
+  background-color: rgb(153, 11, 11);
+  color: #fff;
+  border-radius: 50%;
+  font-size: large;
+  width: fit-content;
+  float: right;
+  padding: 8px 10px;
+}
+
+.deleteNoteBtn:hover {
+  cursor: pointer;
+}
+
+.editNoteBtn {
+  width: fit-content;
+  color: rgb(36, 68, 175);
+  font-size: xx-large;
+}
+
+.editNoteBtn:hover {
+  cursor: pointer;
 }

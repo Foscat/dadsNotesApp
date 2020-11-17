@@ -7,11 +7,12 @@ router
   .get(fileController.getAllWebNotes)
   .post(fileController.createWebNote);
 
-// // Matches with "/api/web/:id"
-// router.route("/api/web/:id")
-//   .get(userController.findById)
-//   .put(userController.update)
-//   .delete(userController.remove);
+// Matches with "/api/web/:id"
+router
+  .route("/api/web/:id")
+  // .get(userController.findById)
+  .put(fileController.editWebNote)
+  .delete(fileController.deleteWebNote);
 
 // Matches with "/api/web"
 router.route("/api/linux").get(fileController.getAllLinuxNotes);
