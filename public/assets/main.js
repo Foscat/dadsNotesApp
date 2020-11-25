@@ -32,7 +32,9 @@ function fillNotesSection(incomingNotes, type) {
   });
   currentNotes = incomingNotes;
   $("#newNoteBtn").empty();
-  const submitButton = $(`<button id="createNoteBtn" data-type="${type}" type="button" class="btn btn-success">Submit</button>`);
+  const submitButton = $(
+    `<button id="createNoteBtn" data-type="${type}" type="button" class="btn btn-success">Submit</button>`
+  );
   $("#newNoteBtn").append(submitButton);
 }
 
@@ -55,7 +57,9 @@ function primeEditForm(id, type) {
   $("#editTitle").val(currentValue.title);
   $("#editContent").val(currentValue.content);
   $("#editTags").val(currentValue.tags);
-  const submitButton = $(`<button id='submitEditedNoteBtn' data-type='${type}' data-id='${id}'  type='button' class='btn btn-primary'>Save Changes</button>`);
+  const submitButton = $(
+    `<button id='submitEditedNoteBtn' data-type='${type}' data-id='${id}'  type='button' class='btn btn-primary'>Save Changes</button>`
+  );
   $("#subModBtn").append(submitButton);
 }
 
@@ -75,7 +79,7 @@ function postNote(type) {
       $("#tagsContent").val("");
       currentNotes = res;
       console.log({ res });
-       return fillNotesSection(res, type);
+      return fillNotesSection(res, type);
     },
   });
 }
@@ -145,9 +149,9 @@ $(document).on("click", ".deleteNoteBtn", function () {
   deleteNote(this.dataset.index, this.dataset.type);
 });
 
-$(document).on("click", "#createNoteBtn", function(){
+$(document).on("click", "#createNoteBtn", function () {
   postNote(this.dataset.type);
-})
+});
 
 // Click function for editing notes
 $(document).on("click", ".editNoteBtn", function () {
@@ -156,9 +160,8 @@ $(document).on("click", ".editNoteBtn", function () {
 
 // Click function to handle submitting of edited notes
 $(document).on("click", "#submitEditedNoteBtn", function () {
-  editNote(this.dataset.id,this.dataset.type);
+  editNote(this.dataset.id, this.dataset.type);
 });
-
 
 // On load get web notes by default
 showNotes("web");

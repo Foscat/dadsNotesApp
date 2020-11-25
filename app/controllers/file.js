@@ -54,7 +54,7 @@ function editNote(updatedNote, noteType) {
   notePool[updatedNote.id] = { ...updatedNote };
 
   fs.writeFile(
-    `./app/db/${noteType}`,
+    `./app/db/${noteType}.json`,
     JSON.stringify(notePool),
     "utf8",
     (err, res) => {
