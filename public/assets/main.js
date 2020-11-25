@@ -23,38 +23,40 @@ function generateNoteCard(note) {
   return wrapper;
 }
 
-function fillNotesSection(currentNotes, type) {
+function fillNotesSection(incomingNotes, type) {
   $("#currentNotesSection").empty();
-  currentNotes.map((note) => {
+  incomingNotes.map((note) => {
     note["type"] = type;
     const generatedNote = generateNoteCard(note);
     $("#currentNotesSection").append(generatedNote);
   });
+  currentNotes = incomingNotes;
+  $("#newNoteBtn").empty();
+  const submitButton = $(`<button id="createNoteBtn" data-type="${type}" type="button" class="btn btn-success">Submit</button>`);
+  $("#newNoteBtn").append(submitButton);
 }
 
 function showNotes(notesType) {
-  if (notesType === "web") {
-    showWebNotes();
-  } else if (notesType === "linux") {
-    showLinuxNotes();
-  } else if (notesType === "python") {
-    showPythonNotes();
-  } else if (notesType === "computers") {
-    showComputersNotes();
-  } else if (notesType === "raspberryPi") {
-    showRaspberryPiNotes();
-  } else {
-    showWebNotes();
-  }
+  $.ajax({
+    url: `/api/${notesType}`,
+    contentType: "application/json",
+    dataType: "json",
+    success: (res) => {
+      console.log(`Get ${notesType} notes`, res);
+      currentNotes = res;
+      return fillNotesSection(res, notesType);
+    },
+  });
 }
 
 function primeEditForm(id, type) {
-  const currentValue = db[`${type}`][id];
+  $("#subModBtn").empty();
+  const currentValue = currentNotes[id];
   $("#editTitle").val(currentValue.title);
   $("#editContent").val(currentValue.content);
   $("#editTags").val(currentValue.tags);
-  $("#submitEditedNoteBtn").data("id", id);
-  $("#submitEditedNoteBtn").data("type", type);
+  const submitButton = $(`<button id='submitEditedNoteBtn' data-type='${type}' data-id='${id}'  type='button' class='btn btn-primary'>Save Changes</button>`);
+  $("#subModBtn").append(submitButton);
 }
 
 function postNote(type) {
@@ -71,7 +73,9 @@ function postNote(type) {
       $("#noteTitle").val("");
       $("#noteContent").val("");
       $("#tagsContent").val("");
-      showNotes(type);
+      currentNotes = res;
+      console.log({ res });
+       return fillNotesSection(res, type);
     },
   });
 }
@@ -87,10 +91,11 @@ function editNote(id, type) {
     type: "PUT",
     data: { formData, currentNotes },
     success: (res) => {
+      console.log(res);
       $("#editTitle").val("");
       $("#editContent").val("");
       $("#editTags").val("");
-      showNotes(type);
+      return fillNotesSection(res, type);
     },
   });
 }
@@ -105,122 +110,55 @@ function deleteNote(id, type) {
     success: (res) => {
       console.log("Delete note");
       currentNotes = res;
-      fillNotesSection(res, type);
-    },
-  });
-}
-
-function showWebNotes() {
-  $.ajax({
-    url: "/api/web",
-    contentType: "application/json",
-    dataType: "json",
-    success: (res) => {
-      console.log("Get web notes", res);
-      currentNotes = res;
-      fillNotesSection(res, "web");
-    },
-  });
-}
-
-function postWebNote() {
-  postNote("web");
-}
-
-function showLinuxNotes() {
-  $.ajax({
-    url: "/api/linux",
-    contentType: "application/json",
-    dataType: "json",
-    success: (res) => {
-      console.log("Get linux notes", res);
-      currentNotes = res;
-      fillNotesSection(res, "linux");
-    },
-  });
-}
-
-function showPythonNotes() {
-  $.ajax({
-    url: "/api/python",
-    contentType: "application/json",
-    dataType: "json",
-    success: (res) => {
-      console.log("Get python notes", res);
-      currentNotes = res;
-      fillNotesSection(res, "python");
-    },
-  });
-}
-
-function showRaspberryPiNotes() {
-  $.ajax({
-    url: "/api/raspberryPi",
-    contentType: "application/json",
-    dataType: "json",
-    success: (res) => {
-      console.log("Get raspberry Pi notes", res);
-      currentNotes = res;
-      fillNotesSection(res, "raspberryPi");
-    },
-  });
-}
-
-function showComputersNotes() {
-  $.ajax({
-    url: "/api/computers",
-    contentType: "application/json",
-    dataType: "json",
-    success: (res) => {
-      console.log("Get computers notes", res);
-      currentNotes = res;
-      fillNotesSection(res, "computers");
+      return fillNotesSection(res, type);
     },
   });
 }
 
 function toggleNotesForm(formShowing) {
-  console.log(formShowing);
   if (formShowing === "false") {
     console.log("show form");
+    $("#notesFormToggle").text("Close notes form");
     $("#notesFormToggle").attr("data-show", "true");
     $("#addNoteForm").removeClass("hidden");
   } else {
-    console.log("hide form");
+    $("#notesFormToggle").text("Add a note");
     $("#notesFormToggle").attr("data-show", "false");
     $("#addNoteForm").addClass("hidden");
   }
 }
 
-// On load get web notes by default
-showWebNotes();
-
 // Click funtions for titles of section to show that sections notes
-$("#webDesign").on("click", showWebNotes);
-$("#linux").on("click", showLinuxNotes);
-$("#python").on("click", showPythonNotes);
-$("#raspberryPi").on("click", showRaspberryPiNotes);
-$("#computers").on("click", showComputersNotes);
+$("#webDesign").on("click", () => showNotes("web"));
+$("#linux").on("click", () => showNotes("linux"));
+$("#python").on("click", () => showNotes("python"));
+$("#raspberryPi").on("click", () => showNotes("raspberryPi"));
+$("#computers").on("click", () => showNotes("computers"));
 
 // Click function to toggle notes
 $(document).on("click", "#notesFormToggle", function () {
-  const formShowing = this.dataset.show;
-  toggleNotesForm(formShowing);
+  toggleNotesForm(this.dataset.show);
 });
-
-// Click functions for the make note form
-$("#createNoteBtn").on("click", postWebNote);
 
 // Click function for deleting notes
 $(document).on("click", ".deleteNoteBtn", function () {
-  console.log("dataset", this.dataset);
   deleteNote(this.dataset.index, this.dataset.type);
 });
 
+$(document).on("click", "#createNoteBtn", function(){
+  postNote(this.dataset.type);
+})
+
+// Click function for editing notes
 $(document).on("click", ".editNoteBtn", function () {
   primeEditForm(this.dataset.index, this.dataset.type);
 });
 
+// Click function to handle submitting of edited notes
 $(document).on("click", "#submitEditedNoteBtn", function () {
-  editNote(this.dataset.index, this.dataset.type);
+  editNote(this.dataset.id,this.dataset.type);
 });
+
+
+// On load get web notes by default
+showNotes("web");

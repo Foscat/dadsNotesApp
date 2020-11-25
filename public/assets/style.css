@@ -103,11 +103,12 @@ form {
 .deleteNoteBtn {
   background-color: rgb(153, 11, 11);
   color: #fff;
-  border-radius: 50%;
+  clip-path: circle(40%);
   font-size: large;
   width: fit-content;
   float: right;
-  padding: 8px 10px;
+  text-align: center;
+  padding: 15px;
 }
 
 .deleteNoteBtn:hover {

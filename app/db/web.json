@@ -1,8 +1,1 @@
-[
-  {
-    "id": 0,
-    "title": "My first web note",
-    "content": "This is where I ramble on and on about websites",
-    "tags": []
-  }
-]
+[{"id":0,"title":"My first web note","content":"This is where I ramble on and on about websites","type":"web"}]
