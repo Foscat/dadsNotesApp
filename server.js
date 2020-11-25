@@ -51,4 +51,4 @@ app.listen(PORT, () =>
 );
 
 // Opens the app in your default browser on load
-// open(`http://localhost:${PORT}`);
+open(`http://localhost:${PORT}`);

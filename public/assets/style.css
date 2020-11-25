@@ -85,6 +85,10 @@ form {
   display: none;
 }
 
+.noNotesMsg {
+  text-align: center;
+}
+
 .noteCard {
   background-color: antiquewhite;
   border: solid black 1px;

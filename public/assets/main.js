@@ -1,14 +1,14 @@
 let currentNotes = [];
 
-function generateNoteCard(note) {
+function generateNoteCard(note, type) {
   const wrapper = $("<div class='noteCard card card-body'></div>");
   const titleWrapper = $("<div class='noteTitleWrapper card-head'></div>");
   const title = $(`<h3 class='noteTitle card-title'>${note.title}</h3>`);
   const deleteButton = $(
-    `<span data-type='${note.type}' data-index='${note.id}' class="deleteNoteBtn">X</span>`
+    `<span data-type='${type}' data-index='${note.id}' class="deleteNoteBtn">X</span>`
   );
   const editButton = $(
-    `<span data-type='${note.type}' data-index='${note.id}' data-toggle="modal" data-target="#editModal" class="editNoteBtn">&#9998;<span>`
+    `<span data-type='${type}' data-index='${note.id}' data-toggle="modal" data-target="#editModal" class="editNoteBtn">&#9998;<span>`
   );
   const description = $(
     `<p class="noteDescription card-text">${note.content}</p>`
@@ -25,12 +25,20 @@ function generateNoteCard(note) {
 
 function fillNotesSection(incomingNotes, type) {
   $("#currentNotesSection").empty();
-  incomingNotes.map((note) => {
-    note["type"] = type;
-    const generatedNote = generateNoteCard(note);
-    $("#currentNotesSection").append(generatedNote);
-  });
+  if (incomingNotes.length) {
+    incomingNotes.map((note) => {
+      const generatedNote = generateNoteCard(note, type);
+      $("#currentNotesSection").append(generatedNote);
+    });
+  } else {
+    const noNotesMsg = $(
+      "<div style='margin-top:25px;'><h3 class='noNotesMsg'>You currently have no notes for this section</h3></div>"
+    );
+    $("#currentNotesSection").append(noNotesMsg);
+  }
   currentNotes = incomingNotes;
+
+  // Prime create note form for new note type
   $("#newNoteBtn").empty();
   const submitButton = $(
     `<button id="createNoteBtn" data-type="${type}" type="button" class="btn btn-success">Submit</button>`
@@ -44,7 +52,6 @@ function showNotes(notesType) {
     contentType: "application/json",
     dataType: "json",
     success: (res) => {
-      console.log(`Get ${notesType} notes`, res);
       currentNotes = res;
       return fillNotesSection(res, notesType);
     },
@@ -78,17 +85,16 @@ function postNote(type) {
       $("#noteContent").val("");
       $("#tagsContent").val("");
       currentNotes = res;
-      console.log({ res });
       return fillNotesSection(res, type);
     },
   });
 }
 
 function editNote(id, type) {
-  let formData = { id };
+  let formData = { id, createdAt: currentNotes[parseInt(id)].createdAt };
   formData["title"] = $("#editTitle").val();
   formData["content"] = $("#editContent").val();
-  formData["tags"] = $("editTags").val();
+  formData["tags"] = $("#editTags").val();
 
   $.ajax({
     url: `/api/${type}/${id}`,
@@ -121,7 +127,6 @@ function deleteNote(id, type) {
 
 function toggleNotesForm(formShowing) {
   if (formShowing === "false") {
-    console.log("show form");
     $("#notesFormToggle").text("Close notes form");
     $("#notesFormToggle").attr("data-show", "true");
     $("#addNoteForm").removeClass("hidden");
@@ -161,6 +166,7 @@ $(document).on("click", ".editNoteBtn", function () {
 // Click function to handle submitting of edited notes
 $(document).on("click", "#submitEditedNoteBtn", function () {
   editNote(this.dataset.id, this.dataset.type);
+  $("#editModal").modal("hide");
 });
 
 // On load get web notes by default

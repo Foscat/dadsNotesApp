@@ -1,6 +1,6 @@
 # Dad's Notes App
 
-Experss.js based notes app
+Express.js based notes app
 
 ---
 

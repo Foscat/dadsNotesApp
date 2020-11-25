@@ -48,21 +48,22 @@ function deleteNote(updatedData, noteType) {
   return fixedNoteIds;
 }
 
-function editNote(updatedNote, noteType) {
-  let notePool = [...db[`${noteType}`]];
-
-  notePool[updatedNote.id] = { ...updatedNote };
+function editNote(data, noteType) {
+  data.currentNotes[parseInt(data.formData.id)] = {
+    ...data.formData,
+    updatedAt: moment().format("MMMM Do YYYY, h:mm:ss a"),
+  };
 
   fs.writeFile(
     `./app/db/${noteType}.json`,
-    JSON.stringify(notePool),
+    JSON.stringify(data.currentNotes),
     "utf8",
     (err, res) => {
       if (err) throw err;
       return res;
     }
   );
-  return notePool;
+  return data.currentNotes;
 }
 
 // Web notes CRUD
