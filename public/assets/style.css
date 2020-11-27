@@ -40,9 +40,10 @@ nav ul li {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  background-color: #7F85A7;
 }
 .container {
-  width: 35%;
+  width: 25%;
   display: flex;
   flex-direction: column;
   margin: auto 0;
@@ -51,11 +52,12 @@ nav ul li {
 }
 
 #notesSection {
-  width: 55%;
-  background-color: cadetblue;
+  width: 75%;
+  background-color: #7F85A7;
   height: 90vh;
   overflow: auto;
   padding-top: 10px;
+  margin: 10px auto;
 }
 
 .top-box {
@@ -72,13 +74,10 @@ form {
   margin: 10px auto;
 }
 
-#notesFormToggle {
-  background-color: darkslategray;
-  color: #fff;
+#notesFormToggle, .editNoteBtn, .deleteNoteBtn {
+  background-color: #595F7F;
+  color: #afb8eb;
   margin: 20px 0 0 50px;
-}
-#notesFormToggle:hover {
-  cursor: pointer;
 }
 
 .hidden {
@@ -90,12 +89,12 @@ form {
 }
 
 .noteCard {
-  background-color: antiquewhite;
-  border: solid black 1px;
-  border-radius: 8px;
-  width: 95%;
-  margin: 10px auto;
-  padding: 10px;
+  background-color: #A2AAD4;
+  border: solid #414559 1px;
+  border-radius: 1px;
+  width: 98%;
+  margin: 2px auto;
+  padding: 2px;
 }
 
 .noteTitleWrapper {
@@ -104,27 +103,50 @@ form {
   justify-content: space-between;
 }
 
-.deleteNoteBtn {
-  background-color: rgb(153, 11, 11);
-  color: #fff;
-  clip-path: circle(40%);
-  font-size: large;
-  width: fit-content;
-  float: right;
+.webLinkButton {
+  color: #414559;
+  font-size: small;
+  float: left;
   text-align: center;
-  padding: 15px;
+  line-height: normal;
+  padding: 3px;
 }
 
-.deleteNoteBtn:hover {
-  cursor: pointer;
+#webDesign,
+#linux,
+#python,
+#raspberryPi,
+#computers{
+  color: #414559;
+  font-size: medium;
+  float: left;
+  text-align: center;
+  line-height: normal;
 }
 
-.editNoteBtn {
-  width: fit-content;
-  color: rgb(36, 68, 175);
-  font-size: xx-large;
-}
 
+
+
+#notesFormToggle:hover,
+.deleteNoteBtn:hover,
 .editNoteBtn:hover {
-  cursor: pointer;
+    background-color: #AFB8EB;
+    cursor: pointer;
+    color: #414559;
+}
+
+#webDesign:hover,
+#linux:hover,
+#python:hover,
+#raspberryPi:hover,
+#computers:hover {
+    background-color: #AFB8EB;
+    cursor: pointer;
+    color: #414559;
+}
+
+.webLinkButton:hover {
+    background-color: #595F7F;
+    cursor: pointer;
+    color: #afb8eb;
 }

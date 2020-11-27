@@ -3,12 +3,12 @@ let currentNotes = [];
 function generateNoteCard(note, type) {
   const wrapper = $("<div class='noteCard card card-body'></div>");
   const titleWrapper = $("<div class='noteTitleWrapper card-head'></div>");
-  const title = $(`<h3 class='noteTitle card-title'>${note.title}</h3>`);
+  const title = $(`<h5 class='noteTitle card-title'>${note.title}</h5>`);
   const deleteButton = $(
-    `<span data-type='${type}' data-index='${note.id}' class="deleteNoteBtn">X</span>`
+    `<button data-type='${type}' data-index='${note.id}' class="deleteNoteBtn">Delete Note</button>`
   );
   const editButton = $(
-    `<span data-type='${type}' data-index='${note.id}' data-toggle="modal" data-target="#editModal" class="editNoteBtn">&#9998;<span>`
+    `<button data-type='${type}' data-index='${note.id}' data-toggle="modal" data-target="#editModal" class="editNoteBtn">Edit Note</button>`
   );
   const description = $(
     `<p class="noteDescription card-text">${note.content}</p>`
