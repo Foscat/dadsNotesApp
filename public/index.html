@@ -1,255 +1,515 @@
 <!DOCTYPE html>
 <html>
-<!-- COMMENTS -->
+  <!-- COMMENTS -->
 
-<head>
+  <head>
     <title>Bron's Web Links</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
 
     <link rel="stylesheet" type="text/css" href="./assets/style.css" />
-</head>
+  </head>
 
-<nav>
+  <nav>
     <ul>
-        <li>
-            <a href="#webDesign">Web</a>
-        </li>
-        <li>
-            <a href="#linux">Linux</a>
-        </li>
-        <li>
-            <a href="#python">Python</a>
-        </li>
-        <li>
-            <a href="#raspberryPi">Raspberry Pi</a>
-        </li>
-        <li>
-            <a href="#computers">Computers</a>
-        </li>
+      <li>
+        <a href="#webDesign">Web</a>
+      </li>
+      <li>
+        <a href="#linux">Linux</a>
+      </li>
+      <li>
+        <a href="#python">Python</a>
+      </li>
+      <li>
+        <a href="#raspberryPi">Raspberry Pi</a>
+      </li>
+      <li>
+        <a href="#computers">Computers</a>
+      </li>
     </ul>
-</nav>
+  </nav>
 
-<body>
+  <body>
     <div id="editModal" class="modal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Edit Note</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="editTitle">Title</label>
-                            <input type="text" class="form-control" id="editTitle" />
-                        </div>
-                        <div class="form-group">
-                            <label for="editContent">Content</label>
-                            <textarea rows="5" class="form-control" id="editContent"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="editTags">Tags</label>
-                            <input type="email" class="form-control" id="editTags" aria-describedby="emailHelp" />
-                        </div>
-                    </form>
-                </div>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Edit Note</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="editTitle">Title</label>
+                <input type="text" class="form-control" id="editTitle" />
+              </div>
+              <div class="form-group">
+                <label for="editContent">Content</label>
+                <textarea
+                  rows="5"
+                  class="form-control"
+                  id="editContent"
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <label for="editTags">Tags</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="editTags"
+                  aria-describedby="emailHelp"
+                />
+              </div>
+            </form>
+          </div>
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                        Close
-                    </button>
-                    <div id="subModBtn"></div>
-                </div>
-            </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <div id="subModBtn"></div>
+          </div>
         </div>
+      </div>
     </div>
 
     <div id="siteWrapper">
-        <div class="container">
-            <div class="top-box">
-                <h3 id="webDesign">
-                    <img src="./assets/images/spider-web.png" /> Web Design
-                </h3>
-            </div>
-
-            <div class="left-box">
-                <p>
-                    <a href="https://jsbin.com/?html,output" target="_blank" class="webLinkButton" >
-                        Javascript code tester</a><br />
-
-                    <a href="https://www.w3schools.com/" target="_blank" class="webLinkButton">W3School</a><br />
-
-                    <a href="http://www.codingheroes.io/resources/" target="_blank" class="webLinkButton">Codingheroes</a><br />
-
-                    <a href="https://www.favicon-generator.org/search/" target="_blank" class="webLinkButton">Favicons</a><br />
-
-                    <a href="https://developers.google.com/fonts/" target="_blank" class="webLinkButton">Google Fonts</a><br />
-
-                    <a href="http://paletton.com/#uid=1000u0kllllaFw0g0qFqFg0w0aF" target="_blank" class="webLinkButton">Color Design</a><br />
-
-                    <a href="https://www.blindtextgenerator.com/lorem-ipsum" target="_blank" class="webLinkButton">Dummy Text Generator</a><br />
-
-                    <a href="https://getbootstrap.com/" target="_blank" class="webLinkButton">Bootstrap framework</a><br />
-
-                    <a href="https://www.0to255.com/" target="_blank" class="webLinkButton">0 to 255.com</a><br />
-
-                    <a href="http://www.responsivegridsystem.com/" target="_blank" class="webLinkButton">Responsive Web Design</a><br />
-
-                    <a href="https://jquery.com/" target="_blank" class="webLinkButton">jQuery.com</a><br />
-
-                    <a href="http://w3c.github.io/developers/tools/" target="_blank" class="webLinkButton">Web Developer Tools</a><br />
-
-                    <a href="https://en.wikipedia.org/wiki/Usage_share_of_web_browsers" target="_blank" class="webLinkButton">Info about Browsers</a><br />
-
-                    <a href="https://developer.mozilla.org/en-US/docs/Tools" target="_blank" class="webLinkButton">Firefox Developer Tools</a><br />
-
-                    <a href="https://identity.getpostman.com/login?addAccount=1" target="_blank" class="webLinkButton">Postman Sign In</a><br />
-
-                    <a href="https://materialdesignicons.com/" target="_blank" class="webLinkButton">Material Design Icons</a><br />
-
-                    <a href="https://stackoverflow.com/" target="_blank" class="webLinkButton">Stack Overflow</a><br />
-
-                    <a href="https://guides.github.com/" target="_blank" class="webLinkButton">Github Guides</a><br />
-
-                    <a href="https://sqlitebrowser.org/" target="_blank" class="webLinkButton">SQLite DB Browser</a><br />
-                </p>
-            </div>
-
-            <div class="top-box">
-                <h3 id="linux"><img src="./assets/images/linux.png" /> Linux</h3>
-            </div>
-
-            <div class="left-box">
-                <p>
-                    <a href="https://ubuntu.com/" target="_blank" class="webLinkButton"> Ubuntu</a><br />
-
-                    <a href="https://www.howtogeek.com/176471/how-to-share-files-between-windows-and-linux/" target="_blank" class="webLinkButton">
-                        Share files between Windows and Linux</a><br />
-
-                    <a href="https://help.ubuntu.com/community/InstallingSoftware" target="_blank" class="webLinkButton">
-                        Ubuntu Wiki</a><br />
-
-                    <a href="https://www.linux.com/training-tutorials/?filter_by=popular" target="_blank" class="webLinkButton">
-                        Linux Training &#33; Tutorials</a><br />
-
-                    <a href="https://www.offensive-security.com/kali-linux-vm-vmware-virtualbox-image-download/" target="_blank" class="webLinkButton">
-                        Kali Linux VM</a><br />
-
-                    <a href="https://userbase.kde.org/Smb4K" target="_blank" class="webLinkButton">
-                        Samba smb4k</a><br />
-
-                    <a href="https://wiki.samba.org/index.php/User_Documentation" target="_blank" class="webLinkButton">
-                        Samba User Documentation Wiki</a><br />
-
-                    <a href="https://userbase.kde.org/Welcome_to_KDE_UserBase" target="_blank" class="webLinkButton">
-                        KDE UserBase Wiki</a><br />
-                </p>
-            </div>
-
-            <div class="top-box">
-                <h3 id="python">
-                    <img src="./assets/images/language-python.png" /> Python
-                </h3>
-            </div>
-
-            <div class="left-box">
-                <p>
-                    <a href="https://www.python.org/" target="_blank"class="webLinkButton">Python Home</a><br />
-
-                    <a href="https://www.python-course.eu/index.php" target="_blank" class="webLinkButton">Python Course</a><br />
-
-                    <a href="https://jupyter-notebook.readthedocs.io/en/stable/" target="_blank" class="webLinkButton">Jupyter Notebook</a><br />
-
-                    <a href="https://jakevdp.github.io/PythonDataScienceHandbook/" target="_blank" class="webLinkButton">Python Data Science Handbook</a><br />
-
-                    <a href="https://www.dataquest.io/blog/python-api-tutorial/" target="_blank" class="webLinkButton">Python API tutorial (Data Quest)</a><br />
-
-                    <a href="https://www.tutorialspoint.com/xml-parsing-in-python" target="_blank" class="webLinkButton">XML parsing in Python</a><br />
-
-                    <a href="https://www.tutorialspoint.com/xml-parsing-in-python" target="_blank" class="webLinkButton">Setting virtual a Python environment</a><br />
-
-                    <a href="https://pymodbus.readthedocs.io/en/latest/source/example/modbus_mapper.html" target="_blank" class="webLinkButton">PyModbus</a><br />
-
-                    <a href="https://www.sqlitetutorial.net/sqlite-python/" target="_blank" class="webLinkButton">SQLite Python</a><br />
-
-                    <a href="https://openpyxl.readthedocs.io/en/stable/index.html" target="_blank" class="webLinkButton">Openpyxl Python Library to read/write Excel 2010 xlsx/xlsm
-                        files</a>
-                    <br />
-
-                    <a href="https://www.geeksforgeeks.org/python-programming-language/" target="_blank" class="webLinkButton">GeeksforGeeks Python Tutorials</a>
-                    <br />
-                </p>
-            </div>
-
-            <div class="top-box">
-                <h3 id="raspberryPi">
-                    <img src="./assets/images/raspberry-pi.png" /> Raspberry Pi
-                </h3>
-            </div>
-
-            <div class="left-box">
-                <p>
-                    <img src="./assets/images/heart.png" />
-                    <a href="https://www.iotdesignpro.com/raspberry-pi-projects" target="_blank" class="webLinkButton">IOT Design</a><br />
-
-                    <a href="https://code.visualstudio.com/docs/remote/ssh" target="_blank" class="webLinkButton">Remote Development using SSH</a><br />
-
-                    <a href="https://elinux.org/RPi_Hub" target="_blank" class="webLinkButton">Linux Raspberry Pi elearning</a><br />
-                </p>
-            </div>
-
-            <div class="top-box">
-                <h3 id="computers">
-                    <img src="./assets/images/lightbulb-on.png" /> Computers
-                </h3>
-            </div>
-
-            <div class="left-box">
-                <p>
-                    <a href="https://ascii.cl/" target="_blank" class="webLinkButton"> ASCII Codes Table</a><br />
-
-                    <a href="https://www.computerhope.com/tips/" target="_blank" class="webLinkButton">
-                        Computer Tips and Helpful Info</a><br />
-
-                    <a href="https://whatismyipaddress.com/" target="_blank" class="webLinkButton">
-                        What is my IP Address</a><br />
-
-                    <a href="https://www.shellhacks.com/windows-md5-sha256-checksum-built-in-utility/" target="_blank" class="webLinkButton">
-                        Windows Shell Hacks (command-line tip &#33; tricks</a><br />
-                    <a href="https://winscp.net/eng/docs/start" target="_blank" class="webLinkButton">
-                        WinSCP Documentation</a><br />
-                </p>
-            </div>
+      <div class="container">
+        <div class="top-box">
+          <h3 id="webDesign">
+            <img src="./assets/images/spider-web.png" /> Web Design
+          </h3>
         </div>
 
-        <div id="notesSection">
-            <button data-show="false" id="notesFormToggle">Add a note</button>
-            <div class="hidden" id="addNoteForm">
-                <form>
-                    <label for="noteTitle">Title</label>
-                    <input type="text" id="noteTitle" name="noteTitle" />
+        <div class="left-box">
+          <p>
+            <a
+              href="https://jsbin.com/?html,output"
+              target="_blank"
+              class="webLinkButton"
+            >
+              Javascript code tester</a
+            ><br />
 
-                    <label for="noteContent">Content</label>
-                    <textarea name="noteContent" id="noteContent" cols="30" rows="5"></textarea>
+            <a
+              href="https://www.w3schools.com/"
+              target="_blank"
+              class="webLinkButton"
+              >W3School</a
+            ><br />
 
-                    <label for="tagsContent">Tags</label>
-                    <input type="text" id="tagsContent" name="tagsContent" />
+            <a
+              href="http://www.codingheroes.io/resources/"
+              target="_blank"
+              class="webLinkButton"
+              >Codingheroes</a
+            ><br />
 
-                    <div id="newNoteBtn"></div>
-                </form>
-            </div>
+            <a
+              href="https://www.favicon-generator.org/search/"
+              target="_blank"
+              class="webLinkButton"
+              >Favicons</a
+            ><br />
 
-            <h4 id="notesHeader" class="rounded">Current Notes</h4>
+            <a
+              href="https://developers.google.com/fonts/"
+              target="_blank"
+              class="webLinkButton"
+              >Google Fonts</a
+            ><br />
 
-            <div id="currentNotesSection"></div>
+            <a
+              href="http://paletton.com/#uid=1000u0kllllaFw0g0qFqFg0w0aF"
+              target="_blank"
+              class="webLinkButton"
+              >Color Design</a
+            ><br />
+
+            <a
+              href="https://www.blindtextgenerator.com/lorem-ipsum"
+              target="_blank"
+              class="webLinkButton"
+              >Dummy Text Generator</a
+            ><br />
+
+            <a
+              href="https://getbootstrap.com/"
+              target="_blank"
+              class="webLinkButton"
+              >Bootstrap framework</a
+            ><br />
+
+            <a
+              href="https://www.0to255.com/"
+              target="_blank"
+              class="webLinkButton"
+              >0 to 255.com</a
+            ><br />
+
+            <a
+              href="http://www.responsivegridsystem.com/"
+              target="_blank"
+              class="webLinkButton"
+              >Responsive Web Design</a
+            ><br />
+
+            <a href="https://jquery.com/" target="_blank" class="webLinkButton"
+              >jQuery.com</a
+            ><br />
+
+            <a
+              href="http://w3c.github.io/developers/tools/"
+              target="_blank"
+              class="webLinkButton"
+              >Web Developer Tools</a
+            ><br />
+
+            <a
+              href="https://en.wikipedia.org/wiki/Usage_share_of_web_browsers"
+              target="_blank"
+              class="webLinkButton"
+              >Info about Browsers</a
+            ><br />
+
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Tools"
+              target="_blank"
+              class="webLinkButton"
+              >Firefox Developer Tools</a
+            ><br />
+
+            <a
+              href="https://identity.getpostman.com/login?addAccount=1"
+              target="_blank"
+              class="webLinkButton"
+              >Postman Sign In</a
+            ><br />
+
+            <a
+              href="https://materialdesignicons.com/"
+              target="_blank"
+              class="webLinkButton"
+              >Material Design Icons</a
+            ><br />
+
+            <a
+              href="https://stackoverflow.com/"
+              target="_blank"
+              class="webLinkButton"
+              >Stack Overflow</a
+            ><br />
+
+            <a
+              href="https://guides.github.com/"
+              target="_blank"
+              class="webLinkButton"
+              >Github Guides</a
+            ><br />
+
+            <a
+              href="https://sqlitebrowser.org/"
+              target="_blank"
+              class="webLinkButton"
+              >SQLite DB Browser</a
+            ><br />
+          </p>
         </div>
+
+        <div class="top-box">
+          <h3 id="linux"><img src="./assets/images/linux.png" /> Linux</h3>
+        </div>
+
+        <div class="left-box">
+          <p>
+            <a href="https://ubuntu.com/" target="_blank" class="webLinkButton">
+              Ubuntu</a
+            ><br />
+
+            <a
+              href="https://www.howtogeek.com/176471/how-to-share-files-between-windows-and-linux/"
+              target="_blank"
+              class="webLinkButton"
+            >
+              Share files between Windows and Linux</a
+            ><br />
+
+            <a
+              href="https://help.ubuntu.com/community/InstallingSoftware"
+              target="_blank"
+              class="webLinkButton"
+            >
+              Ubuntu Wiki</a
+            ><br />
+
+            <a
+              href="https://www.linux.com/training-tutorials/?filter_by=popular"
+              target="_blank"
+              class="webLinkButton"
+            >
+              Linux Training &#33; Tutorials</a
+            ><br />
+
+            <a
+              href="https://www.offensive-security.com/kali-linux-vm-vmware-virtualbox-image-download/"
+              target="_blank"
+              class="webLinkButton"
+            >
+              Kali Linux VM</a
+            ><br />
+
+            <a
+              href="https://userbase.kde.org/Smb4K"
+              target="_blank"
+              class="webLinkButton"
+            >
+              Samba smb4k</a
+            ><br />
+
+            <a
+              href="https://wiki.samba.org/index.php/User_Documentation"
+              target="_blank"
+              class="webLinkButton"
+            >
+              Samba User Documentation Wiki</a
+            ><br />
+
+            <a
+              href="https://userbase.kde.org/Welcome_to_KDE_UserBase"
+              target="_blank"
+              class="webLinkButton"
+            >
+              KDE UserBase Wiki</a
+            ><br />
+          </p>
+        </div>
+
+        <div class="top-box">
+          <h3 id="python">
+            <img src="./assets/images/language-python.png" /> Python
+          </h3>
+        </div>
+
+        <div class="left-box">
+          <p>
+            <a
+              href="https://www.python.org/"
+              target="_blank"
+              class="webLinkButton"
+              >Python Home</a
+            ><br />
+
+            <a
+              href="https://www.python-course.eu/index.php"
+              target="_blank"
+              class="webLinkButton"
+              >Python Course</a
+            ><br />
+
+            <a
+              href="https://jupyter-notebook.readthedocs.io/en/stable/"
+              target="_blank"
+              class="webLinkButton"
+              >Jupyter Notebook</a
+            ><br />
+
+            <a
+              href="https://jakevdp.github.io/PythonDataScienceHandbook/"
+              target="_blank"
+              class="webLinkButton"
+              >Python Data Science Handbook</a
+            ><br />
+
+            <a
+              href="https://www.dataquest.io/blog/python-api-tutorial/"
+              target="_blank"
+              class="webLinkButton"
+              >Python API tutorial (Data Quest)</a
+            ><br />
+
+            <a
+              href="https://www.tutorialspoint.com/xml-parsing-in-python"
+              target="_blank"
+              class="webLinkButton"
+              >XML parsing in Python</a
+            ><br />
+
+            <a
+              href="https://www.tutorialspoint.com/xml-parsing-in-python"
+              target="_blank"
+              class="webLinkButton"
+              >Setting virtual a Python environment</a
+            ><br />
+
+            <a
+              href="https://pymodbus.readthedocs.io/en/latest/source/example/modbus_mapper.html"
+              target="_blank"
+              class="webLinkButton"
+              >PyModbus</a
+            ><br />
+
+            <a
+              href="https://www.sqlitetutorial.net/sqlite-python/"
+              target="_blank"
+              class="webLinkButton"
+              >SQLite Python</a
+            ><br />
+
+            <a
+              href="https://openpyxl.readthedocs.io/en/stable/index.html"
+              target="_blank"
+              class="webLinkButton"
+              >Openpyxl Python Library to read/write Excel 2010 xlsx/xlsm
+              files</a
+            >
+            <br />
+
+            <a
+              href="https://www.geeksforgeeks.org/python-programming-language/"
+              target="_blank"
+              class="webLinkButton"
+              >GeeksforGeeks Python Tutorials</a
+            >
+            <br />
+          </p>
+        </div>
+
+        <div class="top-box">
+          <h3 id="raspberryPi">
+            <img src="./assets/images/raspberry-pi.png" /> Raspberry Pi
+          </h3>
+        </div>
+
+        <div class="left-box">
+          <p>
+            <img src="./assets/images/heart.png" />
+            <a
+              href="https://www.iotdesignpro.com/raspberry-pi-projects"
+              target="_blank"
+              class="webLinkButton"
+              >IOT Design</a
+            ><br />
+
+            <a
+              href="https://code.visualstudio.com/docs/remote/ssh"
+              target="_blank"
+              class="webLinkButton"
+              >Remote Development using SSH</a
+            ><br />
+
+            <a
+              href="https://elinux.org/RPi_Hub"
+              target="_blank"
+              class="webLinkButton"
+              >Linux Raspberry Pi elearning</a
+            ><br />
+          </p>
+        </div>
+
+        <div class="top-box">
+          <h3 id="computers">
+            <img src="./assets/images/lightbulb-on.png" /> Computers
+          </h3>
+        </div>
+
+        <div class="left-box">
+          <p>
+            <a href="https://ascii.cl/" target="_blank" class="webLinkButton">
+              ASCII Codes Table</a
+            ><br />
+
+            <a
+              href="https://www.computerhope.com/tips/"
+              target="_blank"
+              class="webLinkButton"
+            >
+              Computer Tips and Helpful Info</a
+            ><br />
+
+            <a
+              href="https://whatismyipaddress.com/"
+              target="_blank"
+              class="webLinkButton"
+            >
+              What is my IP Address</a
+            ><br />
+
+            <a
+              href="https://www.shellhacks.com/windows-md5-sha256-checksum-built-in-utility/"
+              target="_blank"
+              class="webLinkButton"
+            >
+              Windows Shell Hacks (command-line tip &#33; tricks</a
+            ><br />
+            <a
+              href="https://winscp.net/eng/docs/start"
+              target="_blank"
+              class="webLinkButton"
+            >
+              WinSCP Documentation</a
+            ><br />
+          </p>
+        </div>
+      </div>
+
+      <div id="notesSection">
+        <button data-show="false" id="notesFormToggle">Add a note</button>
+        <div class="hidden" id="addNoteForm">
+          <form>
+            <label for="noteTitle">Title</label>
+            <input type="text" id="noteTitle" name="noteTitle" />
+
+            <label for="noteContent">Content</label>
+            <textarea
+              name="noteContent"
+              id="noteContent"
+              cols="30"
+              rows="5"
+            ></textarea>
+
+            <label for="tagsContent">Tags</label>
+            <input type="text" id="tagsContent" name="tagsContent" />
+
+            <div id="newNoteBtn"></div>
+          </form>
+        </div>
+
+        <h4 id="notesHeader" class="rounded">Current Notes</h4>
+
+        <div id="currentNotesSection"></div>
+      </div>
     </div>
-</body>
-<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="./assets/main.js"></script>
-
+  </body>
+  <script
+    src="https://code.jquery.com/jquery-3.5.1.js"
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"
+  ></script>
+  <script src="./assets/main.js"></script>
 </html>

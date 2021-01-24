@@ -75,7 +75,10 @@ function postNote(type) {
   formData["title"] = $("#noteTitle").val();
   formData["content"] = $("#noteContent").val();
   formData["tags"] = $("#tagsContent").val().split(" ");
-
+  console.log({ formData, currentNotes });
+  if (!currentNotes) {
+    currentNotes = new Array(0);
+  }
   $.ajax({
     url: `/api/${type}`,
     type: "POST",
@@ -111,7 +114,7 @@ function editNote(id, type) {
 }
 
 function deleteNote(id, type) {
-  currentNotes.pop(id);
+  console.log("Before", { currentNotes, id, type });
   $.ajax({
     url: `/api/${type}/${id}`,
     contentType: "application/json",
