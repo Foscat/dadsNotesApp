@@ -40,7 +40,7 @@ nav ul li {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  background-color: #7F85A7;
+  background-color: #7f85a7;
 }
 .container {
   width: 25%;
@@ -53,7 +53,7 @@ nav ul li {
 
 #notesSection {
   width: 75%;
-  background-color: #7F85A7;
+  background-color: #7f85a7;
   height: 90vh;
   overflow: auto;
   padding-top: 10px;
@@ -74,8 +74,10 @@ form {
   margin: 10px auto;
 }
 
-#notesFormToggle, .editNoteBtn, .deleteNoteBtn {
-  background-color: #595F7F;
+#notesFormToggle,
+.editNoteBtn,
+.deleteNoteBtn {
+  background-color: #595f7f;
   color: #afb8eb;
   margin: 20px 0 0 50px;
 }
@@ -89,7 +91,7 @@ form {
 }
 
 .noteCard {
-  background-color: #A2AAD4;
+  background-color: #a2aad4;
   border: solid #414559 1px;
   border-radius: 1px;
   width: 98%;
@@ -116,7 +118,7 @@ form {
 #linux,
 #python,
 #raspberryPi,
-#computers{
+#computers {
   color: #414559;
   font-size: medium;
   float: left;
@@ -124,15 +126,12 @@ form {
   line-height: normal;
 }
 
-
-
-
 #notesFormToggle:hover,
 .deleteNoteBtn:hover,
 .editNoteBtn:hover {
-    background-color: #AFB8EB;
-    cursor: pointer;
-    color: #414559;
+  background-color: #afb8eb;
+  cursor: pointer;
+  color: #414559;
 }
 
 #webDesign:hover,
@@ -140,13 +139,13 @@ form {
 #python:hover,
 #raspberryPi:hover,
 #computers:hover {
-    background-color: #AFB8EB;
-    cursor: pointer;
-    color: #414559;
+  background-color: #afb8eb;
+  cursor: pointer;
+  color: #414559;
 }
 
 .webLinkButton:hover {
-    background-color: #595F7F;
-    cursor: pointer;
-    color: #afb8eb;
+  background-color: #595f7f;
+  cursor: pointer;
+  color: #afb8eb;
 }

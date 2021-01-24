@@ -3,20 +3,25 @@ const fs = require("fs");
 const moment = require("moment");
 
 function formatArrayIds(currentNotes) {
-  let formattedNotes = [];
-  currentNotes.map((note, i) => {
-    formattedNotes.push({
-      ...note,
-      id: i,
+  const formattedNotes = [];
+  if (currentNotes.length) {
+    currentNotes.map((note, i) => {
+      formattedNotes.push({
+        ...note,
+        id: i,
+      });
     });
-  });
+  }
   return formattedNotes;
 }
 
 // General function to post a note
 
 function postNote(data, noteType) {
-  data.formData["id"] = data.currentNotes.length;
+  if (!data.currentNotes) {
+    data.currentNotes = [];
+  }
+  data.formData["id"] = data.currentNotes || 0;
   data.formData["createdAt"] = moment().format("MMMM Do YYYY, h:mm:ss a");
   data.currentNotes.push(data.formData);
 
@@ -34,8 +39,14 @@ function postNote(data, noteType) {
   return fixedIdNotes;
 }
 
-function deleteNote(updatedData, noteType) {
+function deleteNote(updatedData, removeIndex, noteType) {
+  console.log("incoming date to delete note", {
+    updatedData,
+    removeIndex,
+    noteType,
+  });
   const fixedNoteIds = formatArrayIds(updatedData);
+  fixedNoteIds.splice(removeIndex, 1);
   fs.writeFile(
     `./app/db/${noteType}.json`,
     JSON.stringify(fixedNoteIds),
@@ -69,7 +80,9 @@ function editNote(data, noteType) {
 // Web notes CRUD
 
 function getAllWebNotes(req, res) {
-  res.status(200).send(db.web);
+  fs.readFile(`app/db/web.json`, (err, data) => {
+    res.status(200).send(data);
+  });
 }
 
 function createWebNote(req, res) {
@@ -83,16 +96,18 @@ function editWebNote(req, res) {
 }
 
 function deleteWebNote(req, res) {
+  console.log("WHAT IS IN DB WEB", db.web);
   let data = [...db.web];
-  data.pop(req.params.id);
-  deleteNote(data, "web");
+  deleteNote(data, req.params.id, "web");
   res.status(200).send(data);
 }
 
 // Linux notes CRUD
 
 function getAllLinuxNotes(req, res) {
-  res.status(200).send(db.linux);
+  fs.readFile(`app/db/linux.json`, (err, data) => {
+    res.status(200).send(data);
+  });
 }
 
 function createLinuxNote(req, res) {
@@ -107,15 +122,16 @@ function editLinuxNote(req, res) {
 
 function deleteLinuxNote(req, res) {
   let data = [...db.linux];
-  data.pop(req.params.id);
-  deleteNote(data, "linux");
+  deleteNote(data, req.params.id, "linux");
   res.status(200).send(data);
 }
 
 // Python notes CRUD
 
 function getAllPythonNotes(req, res) {
-  res.status(200).send(db.python);
+  fs.readFile(`app/db/python.json`, (err, data) => {
+    res.status(200).send(data);
+  });
 }
 
 function createPythonNote(req, res) {
@@ -130,15 +146,16 @@ function editPythonNote(req, res) {
 
 function deletePythonNote(req, res) {
   let data = [...db.python];
-  data.pop(req.params.id);
-  deleteNote(data, "python");
+  deleteNote(data, req.params.id, "python");
   res.status(200).send(data);
 }
 
 // Raspberry Pi notes CRUD
 
 function getAllRaspberryPiNotes(req, res) {
-  res.status(200).send(db.raspberryPi);
+  fs.readFile(`app/db/raspberryPi.json`, (err, data) => {
+    res.status(200).send(data);
+  });
 }
 
 function createRaspberryPiNote(req, res) {
@@ -153,15 +170,16 @@ function editRaspberryPiNote(req, res) {
 
 function deleteRaspberryPiNote(req, res) {
   let data = [...db.raspberryPi];
-  data.pop(req.params.id);
-  deleteNote(data, "raspberryPi");
+  deleteNote(data, req.params.id, "raspberryPi");
   res.status(200).send(data);
 }
 
 // Computers notes CRUD
 
 function getAllComputersNotes(req, res) {
-  res.status(200).send(db.computers);
+  fs.readFile(`app/db/computers.json`, (err, data) => {
+    res.status(200).send(data);
+  });
 }
 
 function createComputersNote(req, res) {
@@ -176,8 +194,7 @@ function editComputersNote(req, res) {
 
 function deleteComputersNote(req, res) {
   let data = [...db.computers];
-  data.pop(req.params.id);
-  deleteNote(data, "computers");
+  deleteNote(data, req.params.id, "computers");
   res.status(200).send(data);
 }
 
