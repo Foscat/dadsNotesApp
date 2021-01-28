@@ -1,8 +1,1 @@
-[
-  {
-    "id": 0,
-    "title": "My first computer note",
-    "content": "This is where I ramble on and on about computers",
-    "tags": []
-  }
-]
+[{"title":"computer1","content":"","tags":[""],"id":0,"createdAt":"January 28th 2021, 6:13:42 am"},{"title":"new computer","content":"","tags":[""],"id":1,"createdAt":"January 28th 2021, 6:19:48 am"}]
